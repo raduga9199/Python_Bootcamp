@@ -19,12 +19,24 @@ class Employee(Person):
 
 
 class Developer(Employee):
+    """
     def __init__(self, name: str, age: int, job_title: str = 'Software Developer', company_name: str = 'unknown', salary: int = 0):
         super().__init__(name, age, job_title, company_name, salary)
+    """
+
+    def work(self):
+        print(f'{self.job_title}{self.name} is coding')
+
+
+class Teacher(Employee):
+    def work(self):
+        print(f'{self.name} is teaching')
 
 
 employee_1 = Employee('Hazel', 27, 'QA', 'Apple inc')
-developer_1 = Developer('Daniel', 35, 'Python Developer', 'Google inc',150000)
+developer_1 = Developer('Daniel', 35, 'Python Developer', 'Google inc', 150000)
+teacher = Teacher('Briana', 45, 'Math Teacher')
 
 print(employee_1)
 print(developer_1)
+print(teacher)
