@@ -1,3 +1,4 @@
+import math
 import numbers
 
 from abc import ABC, abstractmethod
@@ -10,10 +11,14 @@ ABC: Abstract class in abc module
 abstractmethod: annotations that can be given to abstract methods
 """
 
+
 class Volume(ABC):
+
     @abstractmethod
     def volume(self):
         pass
+
+
 class Shape(ABC):
 
     def __init__(self):
@@ -28,6 +33,7 @@ class Shape(ABC):
 
 
 class Square(Shape):
+
     def __init__(self, side):
         super().__init__()
         self.side = side
@@ -36,32 +42,34 @@ class Square(Shape):
         return self.side * self.side
 
 
-square1 = Square(5)
+class Circle(Shape):
 
-print(square1.area())
-print(square1)
+    def __init__(self, radius):
+        super().__init__()
+        self.radius = radius
 
-
-class Circle(Shape, ABC):
     def area(self) -> numbers:
-        pass
+        return math.pow(self.radius) * math.pi
 
 
 class Rectangle(Shape):
+
+    def __init__(self, width, length):
+        super().__init__()
+        self.width = width
+        self.length = length
+
     def area(self) -> numbers:
-        pass
+        return self.width * self.length
 
 
 class Cube(Shape, Volume):
-    def __init__(self):
-        super().__init__()
-        self.side = 0
 
     def area(self) -> numbers:
-        return self.side * self.side
+        pass
 
     def volume(self):
-        return self.area() * self.side
+        pass
 
 
 class Cylinder(Shape, Volume):
@@ -73,8 +81,7 @@ class Cylinder(Shape, Volume):
         pass
 
 
+square1 = Square(5)
 
-
-
-
-
+print(square1)
+print(square1.area())
